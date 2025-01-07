@@ -26,21 +26,50 @@ cl.onmessage = (event) => {
     // Обновление классов игрока
     document.getElementById(playerId).setAttribute('class', class_list[1]);
 
-    // Обновление порядка нажатий для killed и voted
+    // Обновление порядка нажатий для killed, voted и deleted
+    const statusElement = document.getElementById(playerId).querySelector('.status');
     if (playerClasses.includes('killed')) {
         if (!killedOrder.includes(playerId)) {
             killedOrder.push(playerId);
         }
+        // Добавляем надпись "УБИТ"
+        statusElement.innerText = "УБИТ";
+        statusElement.style.visibility = "visible"; // Показываем надпись
     } else {
         killedOrder = killedOrder.filter(id => id !== playerId);
+        // Убираем надпись "УБИТ"
+        if (statusElement.innerText === "УБИТ") {
+            statusElement.innerText = "";
+            statusElement.style.visibility = "hidden"; // Скрываем надпись
+        }
     }
 
     if (playerClasses.includes('voted')) {
         if (!votedOrder.includes(playerId)) {
             votedOrder.push(playerId);
         }
+        // Добавляем надпись "ЗАГОЛОСОВАН"
+        statusElement.innerText = "ЗАГОЛОСОВАН";
+        statusElement.style.visibility = "visible"; // Показываем надпись
     } else {
         votedOrder = votedOrder.filter(id => id !== playerId);
+        // Убираем надпись "ЗАГОЛОСОВАН"
+        if (statusElement.innerText === "ЗАГОЛОСОВАН") {
+            statusElement.innerText = "";
+            statusElement.style.visibility = "hidden"; // Скрываем надпись
+        }
+    }
+
+    if (playerClasses.includes('deleted')) {
+        // Добавляем надпись "УДАЛЕН"
+        statusElement.innerText = "УДАЛЕН";
+        statusElement.style.visibility = "visible"; // Показываем надпись
+    } else {
+        // Убираем надпись "УДАЛЕН"
+        if (statusElement.innerText === "УДАЛЕН") {
+            statusElement.innerText = "";
+            statusElement.style.visibility = "hidden"; // Скрываем надпись
+        }
     }
 
     // Обновление отображения порядка нажатий
