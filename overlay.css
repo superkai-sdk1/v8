@@ -28,14 +28,20 @@ footer {
     justify-content: center;
 }
 
+/* Прежние стили градиента */
 .player {
     margin: 0 0.625%;
     width: 8.6%;
     overflow: hidden;
     position: relative;
     border-radius: 5px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .3), -17px 0 15px -17px rgba(0, 0, 0, .8), 17px 0 15px -17px rgba(0, 0, 0, .8), 0 0 30px rgba(0, 0, 0, .1) inset, 0 2px 0 rgba(147, 10, 17, 1);
+    box-shadow: none; /* Удаление тени */
+    background-color: transparent; /* Убедитесь, что фон прозрачный */
     transition: margin-top 1.5s, box-shadow 1.5s, transform 0.3s;
+}
+
+.player.dead {
+    margin-top: 1.5%;
 }
 
 .speaker {
@@ -43,11 +49,8 @@ footer {
     transform: scale(1.1);
 }
 
-.player.dead {
-    margin-top: 1.5%;
-}
 
-
+/* Обновленные стили для фото, чтобы убрать градиент */
 .photo {
     position: absolute;
     top: 0px;
@@ -57,7 +60,8 @@ footer {
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
-    box-shadow: 0px -70px 25px -40px rgba(0, 0, 0, 0.8) inset, 0px -100px 50px -40px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: none; /* Удаление тени */
+    background-color: transparent; /* Убедитесь, что фон прозрачный */
     transition: all 1s;
 }
 
@@ -66,38 +70,29 @@ footer {
     filter: grayscale(100%);
 }
 
+/* Центрируем статус наверху контейнера */
 .status {
-    height: 40px;
-    width: 40px;
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 0; /* Размещаем сверху контейнера */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Центрируем по горизонтали */
+    width: auto;
+    height: auto;
     visibility: hidden;
     opacity: 0;
     transition: visibility 1.5s, opacity 1.5s linear;
+    color: #ffffff; /* Цвет текста */
+    font-size: 14px; /* Размер текста */
+    text-align: center; /* Центрируем текст */
 }
 
-.dead .status {
+.killed .status, .voted .status, .deleted .status {
     visibility: visible;
     opacity: 1;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
+    background-color: transparent; /* Убираем фон */
+    border-radius: 0; /* Убираем закругления */
 }
 
-.killed .status {
-    background-image: url("content/icon/killed.png");
-}
-
-.voted .status {
-    background-image: url("content/icon/voted.png");
-}
-
-.deleted .status {
-    background-image: url("content/icon/deleted.png");
-}
 
 .bg {
     height: 100%;
@@ -159,16 +154,15 @@ footer {
 .number {
     position: absolute;
     left: 6px;
-    bottom: 6px;
-    width: 25px;
-    height: 25px;
+    bottom: 10px;
+    width: 15px;
+    height: 15px;
     text-align: center;
-    background-color: rgba(147, 10, 17, 1);
-    border: 1px solid rgba(147, 10, 17, 1);
-    border-radius: 50%;
+    background-color: transparent; /* Сделать фон прозрачным */
+    border: none; /* Убрать границу */
     color: #fff;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 25px;
     transition: background-color 1.5s, border 1.5s;
 }
@@ -182,12 +176,14 @@ footer {
 
 .nick {
     position: absolute;
-    left: 42px;
-    bottom: 10px;
+    left: 50%;
+    bottom: 5px;
+    transform: translateX(-50%); /* Центрирование по горизонтали */
     color: #fff;
-    font-size: 18px;
+    font-size: 14px;
+    background-color: transparent; /* Убедитесь, что фон прозрачный */
+    text-align: center; /* Центрирование текста */
 }
-
 /* Новые стили для анимации подсветки */
 .highlight {
     border: 4px solid transparent;
