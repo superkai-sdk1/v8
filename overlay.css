@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
 
 body {
     margin: 0;
@@ -329,21 +329,22 @@ footer {
 
 .best-move {
     position: absolute;
-    top: 40px; /* Увеличьте значение, чтобы ЛХ отображался выше */
-    left: 50%; /* Центрируем по горизонтали */
-    transform: translate(-50%, 0); /* Убираем вертикальное смещение */
-    width: auto; /* Устанавливаем авто ширину для вертикального отображения */
-    max-width: 80%; /* Ограничиваем максимальную ширину */
+    top: 48px;
+    left: 9px;
+    width: 30px;
     text-align: center;
+    align-items: left;
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
-    padding: 10px 0; /* Увеличиваем вертикальный отступ */
-    border-radius: 20px;
-    font-size: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 2px;
+    border-radius: 5px;
+    font-size: 18px;
     z-index: 1000;
     transition: opacity 0.3s ease-in-out;
-    writing-mode: vertical-rl; /* Устанавливаем вертикальное направление текста */
-    transform: rotate(90deg); /* Поворачиваем текст, чтобы он читался сверху вниз */
+    margin-top: 5px;
+}
+
+.best-move-number {
+    margin: 5px 0;
 }
 
