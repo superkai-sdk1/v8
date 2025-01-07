@@ -194,4 +194,39 @@ function showBestMoveModal(playerId) {
         }
     };
 }
+let selectedNumbers = [];
 
+function selectNumber(number) {
+    if (selectedNumbers.length < 3) {
+        selectedNumbers.push(number);
+        document.querySelectorAll('.number-button')[number - 1].classList.add('selected-number');
+    } else {
+        alert("Вы можете выбрать только три цифры.");
+    }
+}
+
+function showBestMoveModal(playerId) {
+    const modal = document.getElementById('best-move-modal');
+    modal.style.display = 'block';
+
+    const closeBtn = modal.querySelector('.close');
+    closeBtn.onclick = function () {
+        modal.style.display = 'none';
+        selectedNumbers = [];
+        document.querySelectorAll('.number-button').forEach(button => button.classList.remove('selected-number'));
+    };
+
+    const saveBtn = modal.querySelector('#save-best-move');
+    saveBtn.onclick = function () {
+        if (selectedNumbers.length === 3) {
+            const bestMove = selectedNumbers.join('');
+            console.log("Отправка ЛХ:", `${playerId}|${document.getElementById(playerId).classList.value}|best-move|${bestMove}`);
+            cl.postMessage(`${playerId}|${document.getElementById(playerId).classList.value}|best-move|${bestMove}`);
+            modal.style.display = 'none';
+            selectedNumbers = [];
+            document.querySelectorAll('.number-button').forEach(button => button.classList.remove('selected-number'));
+        } else {
+            alert("Пожалуйста, выберите три цифры.");
+        }
+    };
+}
