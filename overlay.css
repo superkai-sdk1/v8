@@ -316,11 +316,11 @@ footer {
 }
 
 .killed-icon {
-    background-image: url("content/icon/killedw.png"); /* Иконка для "Убили" */
+    background-image: url("content/icon/killed.png"); /* Иконка для "Убили" */
 }
 
 .voted-icon {
-    background-image: url("content/icon/votedw.png"); /* Иконка для "Заголосовали" */
+    background-image: url("content/icon/voted.png"); /* Иконка для "Заголосовали" */
 }
 
 .best-move {
