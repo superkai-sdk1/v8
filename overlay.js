@@ -48,7 +48,7 @@ cl.onmessage = (event) => {
 
     // Обработка Лучшего хода (ЛХ)
     if (class_list[2] === 'best-move') {
-        const bestMove = class_list[3];
+        const bestMove = class_list[3].match(/10|[1-9]/g); // Обработка как строки, включая двузначные числа
         const playerElement = document.getElementById(playerId);
 
         // Удаляем старый ЛХ, если он есть
@@ -60,7 +60,13 @@ cl.onmessage = (event) => {
         // Создаем новый элемент ЛХ
         const bestMoveElement = document.createElement('div');
         bestMoveElement.className = 'best-move';
-        bestMoveElement.textContent = `ЛХ: ${bestMove}`;
+
+        bestMove.forEach(num => {
+            const numElement = document.createElement('div');
+            numElement.className = 'best-move-number';
+            numElement.textContent = num; // Убираем надпись "ЛХ"
+            bestMoveElement.appendChild(numElement);
+        });
 
         playerElement.appendChild(bestMoveElement);
     }
